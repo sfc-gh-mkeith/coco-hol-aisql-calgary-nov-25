@@ -48,7 +48,5 @@ streamlit run streamlit_app.py
 
 ## Before the event
 
-- [ ] Replace `EVENT["signup_link"]` / `signup_short_link` in `lab_config.py` with the Calgary trial signup links
-- [ ] Push to GitHub as `sfc-gh-mkeith/coco-hol-aisql-calgary-nov-25` and check `DATA["zip_url"]` points at the pushed zip
 - [ ] Deploy on share.streamlit.io with main file `workshop_guide/streamlit_app.py`
 - [ ] Do a full dry run in a fresh trial account and note the baseline vs AISQL scores

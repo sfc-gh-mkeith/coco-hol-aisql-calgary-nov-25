@@ -13,8 +13,7 @@ EVENT = {
     "venue_city": "Calgary, AB",
     "duration": "75 min hands-on",
     "event_link": "https://www.snowflake.com/event/calgary-coco-hands-on-lab-20261125/",
-    # TODO before the event: replace with the Calgary trial signup link and short link
-    "signup_link": "https://signup.snowflake.com/?t=e73d5b7babb2d5d3a3826bd4471d4db573a8508e99c7b31b00dd3a7efa1df268&cloud=aws&region=us-east-2",
+    "signup_link": "https://signup.snowflake.com/?t=762eba0e2cc36aa13cd1dfb526fa91d94d7ad354f9e8c2e2ac8348dff61e12e4&cloud=aws&region=us-east-2",
     "signup_short_link": "https://tinyurl.com/yyc-coco-hol",
     "recommended_region": "US East 2 (Ohio)",
     "scenario": """An Alberta energy operator runs five facilities: **Scotford Upgrader, Horizon Oil Sands, Kearl Lake Operations, Christina Lake SAGD and Keystone Terminal Calgary**, shipping product over 20 pipelines. Pipeline shipments are tracked in clean tables, but most operational knowledge is written by people: **incident reports** from field and control room staff, **Alberta Energy Regulator (AER) inspection notes**, and **shipper and refinery emails** in English and French.
