@@ -1,0 +1,6 @@
+facility_id,facility_name,facility_code,operator,facility_type,latitude,longitude,max_capacity_bpd,aer_licence
+F001,Scotford Upgrader,SCTF,Shell Canada,upgrader,53.68,-113.12,350000,AER-F-10442
+F002,Horizon Oil Sands,HRZN,Canadian Natural Resources,extraction,57.34,-111.8,250000,AER-F-20871
+F003,Kearl Lake Operations,KRLK,Imperial Oil,extraction,57.38,-111.45,220000,AER-F-31256
+F004,Christina Lake SAGD,CHLK,Cenovus Energy,sagd,54.82,-110.2,180000,AER-F-40913
+F005,Keystone Terminal Calgary,KYST,TC Energy,pipeline_terminal,51.08,-114.07,590000,AER-F-50377

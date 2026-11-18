@@ -1,0 +1,121 @@
+inspection_id,aer_licence,inspected_at,inspector_notes
+AER-0001,AER-F-50377,2026-09-02,Targeted inspection — produced water disposal program at TC Calgary terminal. High-risk non-compliance identified. Operations at the affected unit suspended pending remediation.
+AER-0002,AER-F-10442,2026-07-05,AER field inspection of the well integrity at Scotford. No deficiencies found; inspection closed as compliant.
+AER-0003,AER-F-40913,2026-09-29,Targeted inspection — pipeline right-of-way program at Christina Lake. No deficiencies found; inspection closed as compliant.
+AER-0004,AER-F-10442,2026-09-07,AER field inspection of the tank farm at Scotford. Low-risk deficiencies noted; corrective action plan required within 30 days.
+AER-0005,AER-F-20871,2026-03-29,"Routine compliance review at the Horizon mine, scope: tank farm. Records and field conditions satisfactory. Compliant, no further action."
+AER-0006,AER-F-20871,2026-01-03,Targeted inspection — emissions monitoring (CEMS) program at Horizon. No deficiencies found; inspection closed as compliant.
+AER-0007,AER-F-50377,2026-03-11,Targeted inspection — tailings pond program at TC Calgary terminal. No deficiencies found; inspection closed as compliant.
+AER-0008,AER-F-50377,2026-06-27,"AER field inspection of the pipeline right-of-way at Keystone Terminal Calgary. Records and field conditions satisfactory. Compliant, no further action."
+AER-0009,AER-F-20871,2026-04-25,AER field inspection of the tailings pond at Horizon Oil Sands. High-risk non-compliance identified. Operations at the affected unit suspended pending remediation.
+AER-0010,AER-F-20871,2026-09-10,Targeted inspection — well integrity program at the Horizon mine. Immediate safety concern found. Suspension order issued until repairs are verified.
+AER-0011,AER-F-50377,2026-01-18,AER field inspection of the sulphur recovery unit at the Calgary terminal. Repeat non-compliance with Directive 060 found. Administrative penalty of roughly $59.8K issued to the licensee.
+AER-0012,AER-F-10442,2026-07-29,Targeted inspection — emissions monitoring (CEMS) program at the Fort Saskatchewan upgrader. Late incident reporting under Directive 071; licensee fined roughly $59.6K.
+AER-0013,AER-F-10442,2026-06-22,AER field inspection of the sulphur recovery unit at Shell Scotford. No deficiencies found; inspection closed as compliant.
+AER-0014,AER-F-20871,2026-05-21,Targeted inspection — flare stack program at HRZN. Late incident reporting under Directive 071; licensee fined 20.3k CAD.
+AER-0015,AER-F-10442,2026-09-19,"Routine compliance review at SCTF, scope: flare stack. Records and field conditions satisfactory. Compliant, no further action."
+AER-0016,AER-F-10442,2026-03-02,"Routine compliance review at SCTF, scope: well integrity. High-risk non-compliance identified. Operations at the affected unit suspended pending remediation."
+AER-0017,AER-F-31256,2026-04-17,"AER field inspection of the tailings pond at Imperial Kearl. Late incident reporting under Directive 071; licensee fined $5,200."
+AER-0018,AER-F-31256,2026-07-29,AER field inspection of the emissions monitoring (CEMS) at Imperial Kearl. No deficiencies found; inspection closed as compliant.
+AER-0019,AER-F-50377,2026-07-10,Targeted inspection — sulphur recovery unit program at Keystone Terminal Calgary. No deficiencies found; inspection closed as compliant.
+AER-0020,AER-F-40913,2026-08-12,"Routine compliance review at Christina Lake, scope: pipeline right-of-way. Records and field conditions satisfactory. Compliant, no further action."
+AER-0021,AER-F-20871,2026-09-14,"Targeted inspection — flare stack program at CNRL Horizon. Repeat non-compliance with Directive 060 found. Administrative penalty of CAD 39,900 issued to the licensee."
+AER-0022,AER-F-10442,2026-02-28,AER field inspection of the tank farm at Scotford. Immediate safety concern found. Suspension order issued until repairs are verified.
+AER-0023,AER-F-20871,2026-04-29,Targeted inspection — emissions monitoring (CEMS) program at Horizon. Low-risk deficiencies noted; corrective action plan required within 30 days.
+AER-0024,AER-F-20871,2026-04-18,AER field inspection of the pipeline right-of-way at Horizon. No deficiencies found; inspection closed as compliant.
+AER-0025,AER-F-20871,2026-01-05,"Routine compliance review at HRZN, scope: produced water disposal. High-risk non-compliance identified. Operations at the affected unit suspended pending remediation."
+AER-0026,AER-F-31256,2026-06-23,"AER field inspection of the tank farm at Kearl Lake Operations. Records and field conditions satisfactory. Compliant, no further action."
+AER-0027,AER-F-40913,2026-09-28,AER field inspection of the pipeline right-of-way at Christina Lake. No deficiencies found; inspection closed as compliant.
+AER-0028,AER-F-40913,2026-08-27,"Routine compliance review at Christina Lake SAGD, scope: emissions monitoring (CEMS). Records and field conditions satisfactory. Compliant, no further action."
+AER-0029,AER-F-20871,2026-04-09,"Routine compliance review at the Horizon mine, scope: pipeline right-of-way. Records and field conditions satisfactory. Compliant, no further action."
+AER-0030,AER-F-20871,2026-01-09,"Routine compliance review at the Horizon mine, scope: produced water disposal. High-risk non-compliance identified. Operations at the affected unit suspended pending remediation."
+AER-0031,AER-F-20871,2026-02-04,"Routine compliance review at Horizon Oil Sands, scope: tank farm. No deficiencies found; inspection closed as compliant."
+AER-0032,AER-F-20871,2026-03-18,AER field inspection of the sulphur recovery unit at HRZN. No deficiencies found; inspection closed as compliant.
+AER-0033,AER-F-40913,2026-07-11,AER field inspection of the emissions monitoring (CEMS) at Christina Lake. Immediate safety concern found. Suspension order issued until repairs are verified.
+AER-0034,AER-F-31256,2026-08-04,"Routine compliance review at the Kearl site, scope: tank farm. No deficiencies found; inspection closed as compliant."
+AER-0035,AER-F-31256,2026-02-06,"Routine compliance review at the Kearl site, scope: produced water disposal. Low-risk deficiencies noted; corrective action plan required within 30 days."
+AER-0036,AER-F-31256,2026-05-01,"Routine compliance review at KRLK, scope: pipeline right-of-way. Late incident reporting under Directive 071; licensee fined 25.1k CAD."
+AER-0037,AER-F-20871,2026-06-15,"Routine compliance review at the Horizon mine, scope: sulphur recovery unit. Records and field conditions satisfactory. Compliant, no further action."
+AER-0038,AER-F-50377,2026-05-16,Targeted inspection — pipeline right-of-way program at the Calgary terminal. Low-risk deficiencies noted; corrective action plan required within 30 days.
+AER-0039,AER-F-10442,2026-06-14,"Routine compliance review at Scotford Upgrader, scope: flare stack. No deficiencies found; inspection closed as compliant."
+AER-0040,AER-F-20871,2026-06-15,Targeted inspection — tailings pond program at Horizon. No deficiencies found; inspection closed as compliant.
+AER-0041,AER-F-20871,2026-08-13,Targeted inspection — flare stack program at Horizon. Late incident reporting under Directive 071; licensee fined 30.3k CAD.
+AER-0042,AER-F-20871,2026-07-05,"AER field inspection of the well integrity at the Horizon mine. Late incident reporting under Directive 071; licensee fined CAD 29,700."
+AER-0043,AER-F-10442,2026-05-30,"Routine compliance review at Shell Scotford, scope: well integrity. No deficiencies found; inspection closed as compliant."
+AER-0044,AER-F-31256,2026-04-04,"Targeted inspection — tank farm program at Imperial Kearl. Records and field conditions satisfactory. Compliant, no further action."
+AER-0045,AER-F-20871,2026-07-12,"AER field inspection of the sulphur recovery unit at Horizon. Records and field conditions satisfactory. Compliant, no further action."
+AER-0046,AER-F-50377,2026-02-03,AER field inspection of the pipeline right-of-way at Keystone Terminal Calgary. Immediate safety concern found. Suspension order issued until repairs are verified.
+AER-0047,AER-F-40913,2026-04-18,"Routine compliance review at Cenovus CL, scope: tank farm. Late incident reporting under Directive 071; licensee fined 20.8k CAD."
+AER-0048,AER-F-40913,2026-09-08,"Targeted inspection — tank farm program at the Christina SAGD plant. Records and field conditions satisfactory. Compliant, no further action."
+AER-0049,AER-F-40913,2026-02-26,"Routine compliance review at Christina Lake, scope: tailings pond. Repeat non-compliance with Directive 060 found. Administrative penalty of roughly $12.1K issued to the licensee."
+AER-0050,AER-F-20871,2026-07-26,AER field inspection of the pipeline right-of-way at Horizon. Immediate safety concern found. Suspension order issued until repairs are verified.
+AER-0051,AER-F-50377,2026-06-30,Targeted inspection — tailings pond program at the Calgary terminal. No deficiencies found; inspection closed as compliant.
+AER-0052,AER-F-50377,2026-02-16,"AER field inspection of the well integrity at Keystone Terminal Calgary. Records and field conditions satisfactory. Compliant, no further action."
+AER-0053,AER-F-10442,2026-05-31,AER field inspection of the produced water disposal at Scotford. Low-risk deficiencies noted; corrective action plan required within 30 days.
+AER-0054,AER-F-10442,2026-09-07,"AER field inspection of the pipeline right-of-way at SCTF. Records and field conditions satisfactory. Compliant, no further action."
+AER-0055,AER-F-31256,2026-04-11,"Targeted inspection — emissions monitoring (CEMS) program at KRLK. Records and field conditions satisfactory. Compliant, no further action."
+AER-0056,AER-F-40913,2026-03-15,"AER field inspection of the emissions monitoring (CEMS) at Cenovus CL. Records and field conditions satisfactory. Compliant, no further action."
+AER-0057,AER-F-31256,2026-03-05,"Routine compliance review at Imperial Kearl, scope: emissions monitoring (CEMS). No deficiencies found; inspection closed as compliant."
+AER-0058,AER-F-20871,2026-01-15,"Routine compliance review at HRZN, scope: produced water disposal. No deficiencies found; inspection closed as compliant."
+AER-0059,AER-F-10442,2026-02-04,"Routine compliance review at SCTF, scope: produced water disposal. Repeat non-compliance with Directive 060 found. Administrative penalty of roughly $10.5K issued to the licensee."
+AER-0060,AER-F-40913,2026-09-10,Targeted inspection — emissions monitoring (CEMS) program at Christina Lake SAGD. No deficiencies found; inspection closed as compliant.
+AER-0061,AER-F-50377,2026-08-25,"Routine compliance review at Keystone Terminal Calgary, scope: tailings pond. Records and field conditions satisfactory. Compliant, no further action."
+AER-0062,AER-F-20871,2026-05-31,"Routine compliance review at the Horizon mine, scope: well integrity. Minor non-compliance — licensee to submit a corrective action plan."
+AER-0063,AER-F-40913,2026-03-10,"Targeted inspection — produced water disposal program at Christina Lake. Records and field conditions satisfactory. Compliant, no further action."
+AER-0064,AER-F-50377,2026-01-25,"Routine compliance review at Keystone Terminal, scope: tailings pond. Records and field conditions satisfactory. Compliant, no further action."
+AER-0065,AER-F-20871,2026-08-02,"AER field inspection of the sulphur recovery unit at the Horizon mine. Records and field conditions satisfactory. Compliant, no further action."
+AER-0066,AER-F-40913,2026-05-17,"Routine compliance review at Cenovus CL, scope: tailings pond. No deficiencies found; inspection closed as compliant."
+AER-0067,AER-F-31256,2026-07-16,AER field inspection of the tank farm at Kearl Lake Operations. No deficiencies found; inspection closed as compliant.
+AER-0068,AER-F-50377,2026-08-25,"Routine compliance review at the Calgary terminal, scope: flare stack. Repeat non-compliance with Directive 060 found. Administrative penalty of $31,400 issued to the licensee."
+AER-0069,AER-F-10442,2026-06-06,Targeted inspection — pipeline right-of-way program at Scotford Upgrader. No deficiencies found; inspection closed as compliant.
+AER-0070,AER-F-31256,2026-08-30,Targeted inspection — tailings pond program at the Kearl site. No deficiencies found; inspection closed as compliant.
+AER-0071,AER-F-10442,2026-08-02,AER field inspection of the pipeline right-of-way at Scotford. No deficiencies found; inspection closed as compliant.
+AER-0072,AER-F-20871,2026-03-29,AER field inspection of the tank farm at CNRL Horizon. Low-risk deficiencies noted; corrective action plan required within 30 days.
+AER-0073,AER-F-10442,2026-09-08,Targeted inspection — flare stack program at the Fort Saskatchewan upgrader. No deficiencies found; inspection closed as compliant.
+AER-0074,AER-F-31256,2026-02-07,"Routine compliance review at the Kearl site, scope: pipeline right-of-way. No deficiencies found; inspection closed as compliant."
+AER-0075,AER-F-40913,2026-06-13,AER field inspection of the pipeline right-of-way at CHLK. No deficiencies found; inspection closed as compliant.
+AER-0076,AER-F-20871,2026-04-24,AER field inspection of the sulphur recovery unit at Horizon. No deficiencies found; inspection closed as compliant.
+AER-0077,AER-F-20871,2026-04-26,"AER field inspection of the tank farm at CNRL Horizon. Records and field conditions satisfactory. Compliant, no further action."
+AER-0078,AER-F-10442,2026-06-05,AER field inspection of the tank farm at Shell Scotford. No deficiencies found; inspection closed as compliant.
+AER-0079,AER-F-40913,2026-05-29,AER field inspection of the produced water disposal at Christina Lake. No deficiencies found; inspection closed as compliant.
+AER-0080,AER-F-31256,2026-02-10,Targeted inspection — emissions monitoring (CEMS) program at Imperial Kearl. No deficiencies found; inspection closed as compliant.
+AER-0081,AER-F-31256,2026-04-20,Targeted inspection — well integrity program at Kearl Lake Operations. Minor non-compliance — licensee to submit a corrective action plan.
+AER-0082,AER-F-40913,2026-09-23,"Routine compliance review at the Christina SAGD plant, scope: tank farm. No deficiencies found; inspection closed as compliant."
+AER-0083,AER-F-10442,2026-01-10,AER field inspection of the produced water disposal at Scotford. No deficiencies found; inspection closed as compliant.
+AER-0084,AER-F-40913,2026-02-11,Targeted inspection — sulphur recovery unit program at Christina Lake SAGD. Immediate safety concern found. Suspension order issued until repairs are verified.
+AER-0085,AER-F-20871,2026-02-22,"Targeted inspection — tank farm program at Horizon Oil Sands. Records and field conditions satisfactory. Compliant, no further action."
+AER-0086,AER-F-10442,2026-09-05,"Routine compliance review at Shell Scotford, scope: flare stack. Records and field conditions satisfactory. Compliant, no further action."
+AER-0087,AER-F-40913,2026-04-19,"Routine compliance review at Cenovus CL, scope: pipeline right-of-way. Repeat non-compliance with Directive 060 found. Administrative penalty of 48.2k CAD issued to the licensee."
+AER-0088,AER-F-40913,2026-01-14,"Routine compliance review at the Christina SAGD plant, scope: tailings pond. Repeat non-compliance with Directive 060 found. Administrative penalty of CAD 34,000 issued to the licensee."
+AER-0089,AER-F-40913,2026-03-26,Targeted inspection — sulphur recovery unit program at Christina Lake. Minor non-compliance — licensee to submit a corrective action plan.
+AER-0090,AER-F-50377,2026-01-16,AER field inspection of the sulphur recovery unit at KYST. No deficiencies found; inspection closed as compliant.
+AER-0091,AER-F-20871,2026-04-15,"AER field inspection of the produced water disposal at HRZN. Records and field conditions satisfactory. Compliant, no further action."
+AER-0092,AER-F-31256,2026-08-13,"Routine compliance review at KRLK, scope: tank farm. Records and field conditions satisfactory. Compliant, no further action."
+AER-0093,AER-F-50377,2026-02-26,AER field inspection of the tailings pond at the Calgary terminal. Low-risk deficiencies noted; corrective action plan required within 30 days.
+AER-0094,AER-F-10442,2026-09-17,"Routine compliance review at the Fort Saskatchewan upgrader, scope: tank farm. No deficiencies found; inspection closed as compliant."
+AER-0095,AER-F-10442,2026-07-03,"Routine compliance review at Shell Scotford, scope: tailings pond. Immediate safety concern found. Suspension order issued until repairs are verified."
+AER-0096,AER-F-31256,2026-07-27,AER field inspection of the emissions monitoring (CEMS) at Kearl. Minor non-compliance — licensee to submit a corrective action plan.
+AER-0097,AER-F-40913,2026-02-09,"Routine compliance review at Christina Lake, scope: tailings pond. No deficiencies found; inspection closed as compliant."
+AER-0098,AER-F-50377,2026-01-03,"Routine compliance review at the Calgary terminal, scope: sulphur recovery unit. Records and field conditions satisfactory. Compliant, no further action."
+AER-0099,AER-F-40913,2026-02-27,"AER field inspection of the pipeline right-of-way at Cenovus CL. Records and field conditions satisfactory. Compliant, no further action."
+AER-0100,AER-F-31256,2026-02-18,"Routine compliance review at the Kearl site, scope: tank farm. Repeat non-compliance with Directive 060 found. Administrative penalty of 15.2k CAD issued to the licensee."
+AER-0101,AER-F-20871,2026-02-16,Targeted inspection — well integrity program at HRZN. No deficiencies found; inspection closed as compliant.
+AER-0102,AER-F-31256,2026-01-06,AER field inspection of the sulphur recovery unit at Imperial Kearl. Immediate safety concern found. Suspension order issued until repairs are verified.
+AER-0103,AER-F-20871,2026-01-22,"Targeted inspection — well integrity program at Horizon Oil Sands. Records and field conditions satisfactory. Compliant, no further action."
+AER-0104,AER-F-20871,2026-07-25,"Routine compliance review at CNRL Horizon, scope: produced water disposal. Minor non-compliance — licensee to submit a corrective action plan."
+AER-0105,AER-F-50377,2026-01-31,"AER field inspection of the tank farm at Keystone Terminal. Records and field conditions satisfactory. Compliant, no further action."
+AER-0106,AER-F-31256,2026-08-20,"AER field inspection of the produced water disposal at KRLK. Records and field conditions satisfactory. Compliant, no further action."
+AER-0107,AER-F-31256,2026-01-11,"Routine compliance review at Kearl, scope: flare stack. Late incident reporting under Directive 071; licensee fined 48.1k CAD."
+AER-0108,AER-F-40913,2026-03-18,"Routine compliance review at Cenovus CL, scope: flare stack. Late incident reporting under Directive 071; licensee fined CAD 25,800."
+AER-0109,AER-F-20871,2026-03-16,"Routine compliance review at the Horizon mine, scope: flare stack. Minor non-compliance — licensee to submit a corrective action plan."
+AER-0110,AER-F-31256,2026-03-27,"Routine compliance review at Imperial Kearl, scope: pipeline right-of-way. Late incident reporting under Directive 071; licensee fined 50k CAD."
+AER-0111,AER-F-40913,2026-09-02,"Routine compliance review at Christina Lake, scope: tailings pond. Minor non-compliance — licensee to submit a corrective action plan."
+AER-0112,AER-F-40913,2026-04-18,AER field inspection of the emissions monitoring (CEMS) at Christina Lake SAGD. Low-risk deficiencies noted; corrective action plan required within 30 days.
+AER-0113,AER-F-40913,2026-09-25,Targeted inspection — produced water disposal program at Christina Lake SAGD. Late incident reporting under Directive 071; licensee fined 25.9k CAD.
+AER-0114,AER-F-10442,2026-09-25,Targeted inspection — sulphur recovery unit program at the Fort Saskatchewan upgrader. Minor non-compliance — licensee to submit a corrective action plan.
+AER-0115,AER-F-31256,2026-02-01,AER field inspection of the tailings pond at KRLK. Late incident reporting under Directive 071; licensee fined 13.8k CAD.
+AER-0116,AER-F-10442,2026-02-12,"Routine compliance review at Scotford Upgrader, scope: emissions monitoring (CEMS). Repeat non-compliance with Directive 060 found. Administrative penalty of roughly $8.1K issued to the licensee."
+AER-0117,AER-F-40913,2026-03-13,"AER field inspection of the well integrity at Christina Lake. Repeat non-compliance with Directive 060 found. Administrative penalty of $26,700 issued to the licensee."
+AER-0118,AER-F-20871,2026-01-25,"Routine compliance review at Horizon, scope: pipeline right-of-way. Repeat non-compliance with Directive 060 found. Administrative penalty of $26,400 issued to the licensee."
+AER-0119,AER-F-50377,2026-08-04,"Targeted inspection — produced water disposal program at KYST. Repeat non-compliance with Directive 060 found. Administrative penalty of CAD 5,700 issued to the licensee."
+AER-0120,AER-F-10442,2026-01-19,"Routine compliance review at the Fort Saskatchewan upgrader, scope: emissions monitoring (CEMS). Records and field conditions satisfactory. Compliant, no further action."

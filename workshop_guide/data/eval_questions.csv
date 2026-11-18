@@ -1,0 +1,13 @@
+question_id,question_type,question,expected_answer
+Q01,structured,Which pipeline operator had the most shipments this year?,Enbridge (105 shipments)
+Q02,structured,What is the average delivery shortfall in barrels for shipments from Kearl Lake Operations (nominated minus delivered barrels)?,"2,562 barrels"
+Q03,lookup,"Which facility was incident INC-0042 at, and what was its severity?","Keystone Terminal Calgary, low severity"
+Q04,aggregate_text,How many incidents were reported at Horizon Oil Sands?,68 incidents
+Q05,aggregate_text,What is the total downtime in hours caused by equipment failures across all facilities?,416 hours
+Q06,aggregate_text,Which facility had the most high or critical severity incidents?,Scotford Upgrader (27 incidents)
+Q07,aggregate_text,What is the total estimated cost of environmental incidents?,"$6,865,500 CAD"
+Q08,aggregate_text,What is the average downtime in hours for weather-related incidents?,9.8 hours
+Q09,aggregate_text,How many critical severity incidents happened in Q3 (July to September)?,9 incidents
+Q10,aggregate_text,"How many AER inspections resulted in a penalty, and what was the total penalty amount?","24 penalties totalling $672,600 CAD"
+Q11,aggregate_text,How many urgent shipper emails were about shipment delays?,22 emails
+Q12,aggregate_text,How many shipper emails were written in French?,35 emails
