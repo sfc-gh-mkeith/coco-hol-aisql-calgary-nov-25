@@ -69,6 +69,11 @@ EVAL_EXAMPLES = [
 ]
 
 FACILITY_NAMES = "Scotford Upgrader, Horizon Oil Sands, Kearl Lake Operations, Christina Lake SAGD, Keystone Terminal Calgary"
+FACILITY_ALIASES = ("Scotford Upgrader (aliases: Scotford, SCTF, Shell Scotford, the Fort Saskatchewan upgrader), "
+                    "Horizon Oil Sands (Horizon, HRZN, CNRL Horizon, the Horizon mine), "
+                    "Kearl Lake Operations (Kearl, KRLK, Imperial Kearl, the Kearl site), "
+                    "Christina Lake SAGD (Christina Lake, CHLK, Cenovus CL, the Christina SAGD plant), "
+                    "Keystone Terminal Calgary (Keystone, KYST, TC Calgary terminal, the Calgary terminal)")
 
 # --------------------------------------------------------------------------
 # Sections. Each step is one of:
@@ -235,12 +240,15 @@ Use PARSE_JSON (not OBJECT_CONSTRUCT) so the column is a VARIANT. Show all 12 ro
              "explain": "The judge only sees what you put in `ground_truth_output`, so it's written as a short rubric with the literal expected value and a tolerance, as the evaluation docs recommend."},
             {"type": "prompt", "id": "Prompt 3.2", "title": "Run the Baseline Evaluation", "text": f"""Run a Cortex Agent evaluation of {FQ}.{N['baseline_agent']}:
 
+- First run USE SCHEMA {FQ} (evaluations run in the session's schema)
 - Dataset: create an evaluation dataset called ENERGY_EVAL_DS from {FQ}.{N['eval_table']} (query column INPUT_QUERY, ground truth column GROUND_TRUTH)
 - Run name: baseline-run-1
 - Metrics: answer_correctness and logical_consistency, both pinned to version v3
-- Put the evaluation YAML config on a stage EVAL_CONFIG in {FQ} (with the YAML file format the docs require) and start the run with EXECUTE_AI_EVALUATION
+- Create a file format EVAL_YAML_FORMAT (TYPE=CSV, FIELD_DELIMITER=NONE, RECORD_DELIMITER='\\n', SKIP_HEADER=0, FIELD_OPTIONALLY_ENCLOSED_BY=NONE, ESCAPE_UNENCLOSED_FIELD=NONE) and a stage EVAL_CONFIG that uses it
+- We cannot upload local files, so write the YAML to @EVAL_CONFIG/eval_baseline.yaml with COPY INTO @EVAL_CONFIG/eval_baseline.yaml FROM (SELECT $$<yaml>$$) using SINGLE=TRUE, HEADER=FALSE, OVERWRITE=TRUE and an uncompressed CSV file format with FIELD_DELIMITER=NONE
+- Start the run with EXECUTE_AI_EVALUATION('START', ...)
 
-Start the run, then check its STATUS until it is COMPLETED.""",
+Then check STATUS every 30 seconds until it is COMPLETED.""",
              "explain": "The run takes a few minutes (12 questions, each answered by the agent and then judged). While it runs, read ahead to Section 4."},
             {"type": "info", "body": f"**No-code alternative:** In Snowsight go to **AI & ML → Agents → {N['baseline_agent']} → Evaluations → Create evaluation run → Run an evaluation manually**. Choose `{N['eval_table']}` as the source table, `INPUT_QUERY` as input, and turn on *Answer correctness* with `GROUND_TRUTH`."},
             {"type": "prompt", "id": "Prompt 3.3", "title": "Read the Baseline Scorecard", "text": f"""Using SNOWFLAKE.LOCAL.GET_AI_EVALUATION_DATA('{N['db']}', '{N['schema']}', '{N['baseline_agent']}', 'CORTEX AGENT', 'baseline-run-1'):
@@ -276,9 +284,24 @@ Start the run, then check its STATUS until it is COMPLETED.""",
         "steps": [
             {"type": "prompt", "id": "Prompt 4.1", "title": "Try the AISQL Functions on a Few Rows", "text": f"""In {FQ}, on 5 rows of INCIDENT_REPORTS_RAW, show side by side:
 
-1. AI_EXTRACT on REPORT_TEXT returning: facility (normalized to one of {FACILITY_NAMES}), downtime_hours (a number, convert minutes to hours), cost_cad (a number, expand k/K to thousands)
-2. AI_CLASSIFY on REPORT_TEXT into category: equipment_failure, weather, safety_injury, environmental, h2s_release, pipeline_integrity
-3. AI_CLASSIFY on REPORT_TEXT into severity: low, medium, high, critical
+1. AI_EXTRACT on REPORT_TEXT returning:
+   - facility: "The facility where the incident happened (not a pipeline name). Answer exactly one of: {FACILITY_ALIASES}"
+   - downtime_hours: downtime in hours as a number (convert minutes to hours)
+   - cost_cad: estimated cost in CAD as a plain number (expand k/K to thousands)
+
+2. AI_CLASSIFY on REPORT_TEXT into category. Pass each label as an object with 'label' and 'description', and set task_description to "Classify the root cause of this energy facility incident report":
+   - equipment_failure: mechanical or electrical breakdown, trip, seal/bearing failure, controller error of plant equipment
+   - weather: caused by weather or natural events: cold snap, blizzard, chinook wind, freezing rain, flooding, wildfire smoke
+   - safety_injury: a worker or contractor was injured: slip, fall, twisted ankle
+   - environmental: a spill, leak or release of a substance (bitumen, diesel, glycol, dilbit, produced water) to the environment
+   - h2s_release: H2S alarm or H2S gas reading
+   - pipeline_integrity: pipeline inspection anomaly, wall loss, pressure drop on a pipeline, dig verification
+
+3. AI_CLASSIFY on REPORT_TEXT into severity, with label descriptions and task_description "Classify the severity the report author assigned, based on the severity wording in the text":
+   - low: minor, low impact, Sev: Low, no real impact to production, low severity
+   - medium: moderate impact, Sev: Medium, medium severity, noticeable curtailment
+   - high: serious, Sev: High, high severity, significant production loss, major curtailment
+   - critical: CRITICAL, Sev: Critical, critical severity, full facility shut-in, emergency response plan activated
 
 Show the original text next to the extracted values so we can check them.""",
              "explain": f"""Example shape of the SQL:
@@ -297,24 +320,35 @@ FROM {FQ}.INCIDENT_REPORTS_RAW
 LIMIT 5;
 ```
 """},
-            {"type": "prompt", "id": "Prompt 4.2", "title": "Build INCIDENTS_ENRICHED", "text": f"""In {FQ}, create a table INCIDENTS_ENRICHED from all rows of INCIDENT_REPORTS_RAW using the same AI_EXTRACT and AI_CLASSIFY logic from the previous step.
+            {"type": "prompt", "id": "Prompt 4.2", "title": "Build INCIDENTS_ENRICHED", "text": f"""In {FQ}, create a table INCIDENTS_ENRICHED from all rows of INCIDENT_REPORTS_RAW using exactly the same AI_EXTRACT and AI_CLASSIFY calls from the previous step (same facility alias list and the same label descriptions; do not simplify them).
 
-Columns: REPORT_ID, SUBMITTED_AT, SUBMITTED_BY, FACILITY_ID (join the extracted facility name to FACILITIES.FACILITY_NAME), FACILITY_NAME, CATEGORY, SEVERITY, DOWNTIME_HOURS (FLOAT), COST_CAD (FLOAT), REPORT_TEXT.
+Columns: REPORT_ID, SUBMITTED_AT, SUBMITTED_BY, FACILITY_ID (join the extracted facility name to FACILITIES.FACILITY_NAME), FACILITY_NAME, CATEGORY, SEVERITY, DOWNTIME_HOURS (FLOAT), COST_CAD (FLOAT), REPORT_TEXT. Strip any non-numeric characters before casting DOWNTIME_HOURS and COST_CAD.
 
-Then show: row count, number of rows where FACILITY_ID, DOWNTIME_HOURS or COST_CAD is NULL, and incidents per facility.""",
+Then show: row count, number of rows where FACILITY_ID, DOWNTIME_HOURS or COST_CAD is NULL, incidents per facility, and incidents per category and severity.""",
              "explain": "This is the one-time cost: the LLM reads each of the 300 reports once. Every question after this is a cheap SQL query instead of an LLM reading text."},
             {"type": "prompt", "id": "Prompt 4.3", "title": "Enrich Inspections and Emails", "text": f"""In {FQ}, create two more enriched tables:
 
 1. INSPECTIONS_ENRICHED from AER_INSPECTIONS_RAW: INSPECTION_ID, AER_LICENCE, INSPECTED_AT, FACILITY_ID (via FACILITIES on AER_LICENCE), FOCUS_AREA and PENALTY_CAD (AI_EXTRACT, 0 if no penalty), OUTCOME (AI_CLASSIFY: compliant, penalty, suspension, corrective_action), INSPECTOR_NOTES.
 
-2. EMAILS_ENRICHED from SHIPPER_EMAILS_RAW: EMAIL_ID, RECEIVED_AT, FROM_COMPANY, LANGUAGE ('en' or 'fr', via AI_EXTRACT or AI_CLASSIFY), BODY_EN (AI_TRANSLATE the body to English; keep English bodies as is), TOPIC (AI_CLASSIFY on BODY_EN: delay, quality, billing, documentation, compliment), IS_URGENT (AI_FILTER: "Does the sender say this is urgent or need an answer today?"), FACILITY_ID (AI_EXTRACT the facility name and join to FACILITIES), BODY.
+2. EMAILS_ENRICHED from SHIPPER_EMAILS_RAW:
+   - EMAIL_ID, RECEIVED_AT, FROM_COMPANY, BODY
+   - LANGUAGE: AI_CLASSIFY on BODY into 'en' or 'fr'
+   - BODY_EN: AI_TRANSLATE BODY from 'fr' to 'en' when LANGUAGE = 'fr', otherwise keep BODY
+   - TOPIC: AI_CLASSIFY on BODY_EN with label descriptions and task_description "Classify what this shipper email is about":
+     - delay: a shipment or batch is late, held, apportioned or missed its cycle
+     - quality: product off-spec, BS&W, water or sediment, quality complaint
+     - billing: invoice, tariff, fees or charges problem
+     - documentation: missing or requested paperwork: lot tickets, custody transfer confirmation, certificates
+     - compliment: praise or thanks
+   - IS_URGENT: AI_FILTER(PROMPT('Does the sender explicitly say this is urgent or that they need an answer today? Requests like "please advise when you can" are not urgent. Email: {{0}}', BODY_EN))
+   - FACILITY_ID: AI_EXTRACT the facility the email is about, using the same facility alias list as INCIDENTS_ENRICHED, then join to FACILITIES.FACILITY_NAME
 
-Show row counts and a sample of 5 rows from each.""",
+Show row counts, NULL FACILITY_ID counts, and a sample of 5 rows from each.""",
              "explain": "AI_TRANSLATE normalizes French emails to English before classification, so one set of labels works for both languages. AI_FILTER returns a real BOOLEAN you can filter on."},
             {"type": "prompt", "id": "Prompt 4.4", "title": "What Did the Pipeline Cost?", "text": f"""In {FQ}:
 
-1. Use AI_COUNT_TOKENS to estimate the total input tokens our pipeline sent to the LLM: the sum of tokens in REPORT_TEXT (x3 functions), INSPECTOR_NOTES (x2) and email BODY (x4).
-2. Query SNOWFLAKE.ACCOUNT_USAGE.CORTEX_AISQL_USAGE_HISTORY for today, grouped by function name and model, showing tokens and credits. If it returns no rows yet, explain that ACCOUNT_USAGE views can lag by up to a few hours and rely on the estimate.
+1. Query SNOWFLAKE.ACCOUNT_USAGE.CORTEX_AISQL_USAGE_HISTORY for today, grouped by FUNCTION_NAME and MODEL_NAME, showing total TOKENS and TOKEN_CREDITS. This is the actual billed cost of the pipeline. If it returns no rows yet, say that ACCOUNT_USAGE views can lag and use the estimate from step 2.
+2. As a rough lower-bound estimate, use AI_COUNT_TOKENS('ai_complete', 'llama3.1-70b', <text>) to count the tokens in REPORT_TEXT (x3 functions), INSPECTOR_NOTES (x2) and email BODY (x4). AI_COUNT_TOKENS does not support ai_extract or ai_filter, so this is a proxy that leaves out each function's built-in system prompt. Compare it with step 1 and explain the gap.
 3. Use AI_AGG over INCIDENTS_ENRICHED.REPORT_TEXT where SEVERITY = 'critical' to write a 3-bullet summary of the main causes of critical incidents.""",
              "explain": "Keep this number: it's the **one-time** cost of preprocessing. In Section 5 you'll compare it with the **per-question** savings of the AISQL agent."},
             {"type": "info", "body": "**In production** you wouldn't rebuild these tables by hand. Wrap the same SELECTs in Dynamic Tables with incremental refresh (or a stream + task), so only new reports go through the LLM as they arrive."},
@@ -348,10 +382,13 @@ Show row counts and a sample of 5 rows from each.""",
 - Same relationship rules as before: no join_type, left_table = fact (many) side, right_table = dimension (one) side, primary_key on dimension tables
 
 Deploy it and test with: "{EVAL_EXAMPLES[1]}\""""},
-            {"type": "prompt", "id": "Prompt 5.2", "title": "Create the AISQL Agent", "text": f"""In {FQ}, create a Cortex Agent called {N['aisql_agent']} with the same orchestration model (auto) and the same instructions as {N['baseline_agent']}, but with these tools:
+            {"type": "prompt", "id": "Prompt 5.2", "title": "Create the AISQL Agent", "text": f"""In {FQ}, create a Cortex Agent called {N['aisql_agent']} with orchestration model auto.
 
-- Cortex Analyst on {N['enriched_sv']}: use for every count, total, average or ranking, including incidents, AER inspections and emails
-- Cortex Search on {N['search']}: use only when the user asks what a specific report or email says
+Instructions: "You are an Alberta energy operations analyst. Use the enriched analyst tool for every count, total, average or ranking, including facilities, pipelines, shipments, incidents, AER inspections and shipper emails. Use search only when the user asks what a specific report, inspection note or email says. Always give a direct numeric answer when asked for counts or totals."
+
+Tools:
+- Cortex Analyst on {N['enriched_sv']} (warehouse {N['wh']}), with a description that lists the incident, inspection and email metrics
+- Cortex Search on {N['search']} (id and title column DOC_ID), described as "only for reading specific documents"
 
 Ask it "{EVAL_EXAMPLES[0]}" and "{EVAL_EXAMPLES[2]}" and show which tools it used."""},
             {"type": "prompt", "id": "Prompt 5.3", "title": "Evaluate the AISQL Agent", "text": f"""Run a Cortex Agent evaluation of {FQ}.{N['aisql_agent']} with exactly the same setup as baseline-run-1:
@@ -363,10 +400,11 @@ Ask it "{EVAL_EXAMPLES[0]}" and "{EVAL_EXAMPLES[2]}" and show which tools it use
 Start it and poll STATUS until COMPLETED. Then save the per-question results to EVAL_RESULTS_AISQL in the same shape as EVAL_RESULTS_BASELINE."""},
             {"type": "prompt", "id": "Prompt 5.4", "title": "The Before/After Comparison", "text": f"""In {FQ}, compare EVAL_RESULTS_BASELINE and EVAL_RESULTS_AISQL:
 
-1. A per-question table: question, question type, expected answer, baseline correctness vs AISQL correctness, baseline seconds vs AISQL seconds, baseline tokens vs AISQL tokens.
-2. A summary row for each agent: average correctness, average seconds per answer, average tokens per answer, plus the % change from baseline to AISQL.
-3. Break-even: using the one-time pipeline token estimate from Prompt 4.4 and the average tokens saved per question, how many questions until the AISQL pipeline has paid for itself?
-4. Write 3 bullet points I could share with my leadership about the result.""",
+1. A per-question table: question, question type, expected answer, baseline vs AISQL correctness, baseline vs AISQL seconds, baseline vs AISQL tokens.
+2. A summary row for each agent: average correctness, average seconds, average tokens, plus the % change from baseline to AISQL. Also break it down by QUESTION_TYPE.
+3. Explain what happened to tokens per answer. If they did not go down, explain why (fixed overhead from instructions, tool descriptions and the semantic view on every call) and what actually improved.
+4. Using the one-time pipeline credits from Prompt 4.4, explain the cost trade-off: a one-time cost per document in exchange for exact aggregate answers at lower latency.
+5. Write 3 bullet points I could share with my leadership, focused on accuracy and speed.""",
              "explain": "You can also open **AI & ML → Agents → (either agent) → Evaluations**, select both runs and click **Compare** to see the same before/after per question in the UI."},
             {"type": "copy_list", "title": "Bonus: ask both agents and feel the difference", "items": [
                 "Which facility had the most high or critical severity incidents?",
